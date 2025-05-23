@@ -1,0 +1,507 @@
+/*
+ * تنسيقات الهيدر الخاص بالمستخدم (User Header Style)
+ * @version 4.1 - محدثة مع دعم إعدادات مخصصة من Customizer
+ */
+
+:root {
+    --user-header-primary: #f8f9fa;
+    --user-header-secondary: #6c757d;
+    --user-header-accent: #007bff;
+    --user-header-text: #333333;
+    --user-header-bg: #ffffff;
+    --user-header-border: #e0e0e0;
+    --user-header-radius: 0px;
+    --user-header-font-size: 16px;
+}
+
+/* ---------- الحاوية الأساسية للهيدر ---------- */
+.header-style-user {
+    color: var(--user-header-text);
+    font-size: var(--user-header-font-size);
+    border-radius: var(--user-header-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid var(--user-header-border);
+}
+
+/* ---------- الشريط العلوي (Topbar) ---------- */
+.header-style-user .user-topbar {
+    background-color: var(--user-header-primary);
+    color: var(--user-header-secondary);
+    padding: 5px 0;
+    font-size: 14px;
+}
+.header-style-user .user-topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.header-style-user .user-topbar-left,
+.header-style-user .user-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.header-style-user .user-topbar a {
+    color: var(--user-header-secondary);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.header-style-user .user-topbar a:hover {
+    opacity: 0.8;
+}
+
+/* ---------- الشعار ---------- */
+.header-style-user .site-branding {
+    flex-shrink: 0;
+}
+.header-style-user .custom-logo {
+    max-height: inherit; /* سيتم التحكم به inline في HTML */
+}
+
+/* ---------- وصف الموقع ---------- */
+.header-style-user .site-description {
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--user-header-text);
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* ---------- دعم موضع الشعار (محسن) ---------- */
+.header-style-user .main-header-wrapper {
+    /* Default: Logo left */
+}
+.header-style-user .site-branding.logo-left {
+    /* Default order */
+    margin-right: auto; /* Push other items away */
+}
+.header-style-user .site-branding.logo-center {
+    /* order: 0; */ /* Let it be in natural flow for simplicity with flex-grow */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.header-style-user .site-branding.logo-right {
+    order: 3; /* Place logo last */
+    margin-left: auto; /* Push itself to the right */
+    text-align: right;
+}
+
+/* Adjust flex-grow for menu based on logo position */
+.header-style-user .site-branding.logo-center + .main-navigation {
+    flex-grow: 0; /* Don't let menu grow when logo is centered */
+    width: 100%; /* Allow menu to take full width below logo if needed */
+    justify-content: center;
+    margin-top: 10px; /* Add space if it wraps below */
+}
+
+/* Ensure actions are positioned correctly */
+.header-style-user .site-branding.logo-left ~ .header-actions {
+    margin-left: auto; /* Push actions to the right */
+}
+.header-style-user .site-branding.logo-center ~ .header-actions {
+    margin-left: auto; /* Push actions to the right */
+}
+.header-style-user .site-branding.logo-right ~ .header-actions {
+    order: 1; /* Actions before logo */
+    margin-left: 0;
+}
+
+/* Ensure main navigation is positioned correctly */
+.header-style-user .site-branding.logo-left ~ .main-navigation {
+    /* flex-grow: 1; */ /* Already set */
+    justify-content: center; /* Center menu items */
+}
+.header-style-user .site-branding.logo-right ~ .main-navigation {
+    order: 0; /* Menu first */
+    /* flex-grow: 1; */ /* Already set */
+     justify-content: center; /* Center menu items */
+}
+
+
+/* ---------- تنسيق الهيكل العام ---------- */
+.header-style-user .main-header-area {
+    background-color: var(--user-header-bg);
+    padding: 10px 0;
+}
+.header-style-user .main-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ---------- نموذج البحث ---------- */
+.header-style-user .header-search-icon a {
+    color: var(--user-header-text);
+}
+.header-style-user .header-search-icon a:hover {
+    color: var(--user-header-accent);
+}
+
+/* ---------- الأيقونات والزر المخصص ---------- */
+.header-style-user .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* إضافة فجوة بين العناصر */
+    margin-left: auto; /* دفع العناصر إلى اليمين افتراضيًا */
+}
+
+/* تعديل لضمان التوافق مع الشعار في المنتصف أو اليمين */
+.header-style-user .header-layout-logo_center .header-actions,
+.header-style-user .header-layout-logo_right .header-actions {
+    margin-left: 0;
+}
+
+/* تعديل لضمان التوافق مع الشعار في اليسار */
+.header-style-user .header-layout-logo_left .header-actions {
+    margin-left: auto;
+}
+
+
+/* ---------- الأيقونات ---------- */
+.header-style-user .header-icons-component {
+    display: flex;
+    gap: 12px;
+}
+.header-style-user .header-icons-component .icon-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+.header-style-user .header-icons-component .icon-link:hover {
+    background-color: var(--user-header-primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ---------- زر مخصص ---------- */
+.header-style-user .custom-button {
+    background-color: var(--user-header-accent);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.header-style-user .custom-button:hover {
+    background-color: #0056b3;
+}
+
+/* ---------- القائمة الرئيسية ---------- */
+.header-style-user .main-navigation {
+    display: flex;
+    /* justify-content: center; */ /* Let wrapper handle alignment */
+    /* background-color: var(--user-header-primary); */ /* Removed */
+    /* padding: 10px 0; */ /* Removed */
+    flex-grow: 1; /* Allow menu to take available space */
+    justify-content: center; /* Center the ul inside the nav container */
+}
+.header-style-user .main-navigation ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.header-style-user .main-navigation a {
+    color: var(--user-header-text);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 0;
+    position: relative;
+    transition: 0.3s ease;
+}
+.header-style-user .main-navigation a:hover {
+    color: var(--user-header-accent);
+}
+
+/* تأثير أسفل الرابط */
+.header-style-user .main-navigation a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background-color: var(--user-header-accent);
+    transition: width 0.3s ease;
+}
+.header-style-user .main-navigation a:hover::after,
+.header-style-user .main-navigation .current-menu-item a::after {
+    width: 100%;
+}
+
+/* ---------- القائمة المنسدلة ---------- */
+.header-style-user .main-navigation ul ul.sub-menu {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.header-style-user .main-navigation ul ul a {
+    color: var(--user-header-text);
+    padding: 10px 15px;
+}
+.header-style-user .main-navigation ul ul a:hover {
+    background-color: #f8f8f8;
+    color: var(--user-header-primary);
+}
+.header-style-user .main-navigation ul ul a::after {
+    display: none;
+}
+
+/* ---------- القائمة للجوال ---------- */
+.header-style-user .menu-toggle {
+    color: var(--user-header-text);
+}
+.header-style-user .user-header-nav .menu-toggle {
+    color: #fff;
+}
+
+/* ---------- التجاوب ---------- */
+@media (max-width: 992px) {
+    /* .header-style-user .user-header-wrapper {
+        flex-direction: column;
+        align-items: center;
+    } */
+
+    .header-style-user .search-form-component {
+        order: 3;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .header-style-user .main-navigation {
+        flex-direction: column;
+    }
+
+    .header-style-user .main-navigation a {
+        padding: 12px 15px;
+        border-bottom: 1px solid var(--user-header-border);
+    }
+
+    .header-style-user .main-navigation a::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-style-user .user-topbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-style-user .user-topbar-left,
+    .header-style-user .user-topbar-right {
+        justify-content: center;
+    }
+
+    .header-style-user .custom-logo {
+        max-height: 50px;
+    }
+
+    .header-style-user .header-icons-component {
+        gap: 8px;
+    }
+
+    .header-style-user .header-icons-component .icon-link {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+/* Added Responsive Styles for Header User */
+@media (max-width: 992px) {
+    /* Ensure menu toggle is visible and positioned */
+    .header-style-user .menu-toggle {
+        display: inline-flex; /* Show the toggle */
+        align-items: center;
+        background: none;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 10px; /* Add some space */
+        order: 2; /* Ensure toggle comes after logo if logo is left */
+    }
+    .header-style-user .menu-toggle .menu-icon {
+        /* Basic hamburger icon styling */
+        display: block;
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background-color: var(--user-header-text);
+        transition: background-color 0s 0.3s ease; /* Delay background clear on close */
+    }
+    .header-style-user .menu-toggle .menu-icon::before,
+    .header-style-user .menu-toggle .menu-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--user-header-text);
+        transition: transform 0.3s ease, top 0.3s ease;
+    }
+    .header-style-user .menu-toggle .menu-icon::before {
+        top: -6px;
+    }
+    .header-style-user .menu-toggle .menu-icon::after {
+        top: 6px;
+    }
+    .header-style-user .menu-toggle .menu-text {
+        /* Visually hide text, keep for accessibility */
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+    }
+    /* Active toggle icon (X) */
+     .header-style-user .menu-toggle[aria-expanded="true"] .menu-icon {
+        background-color: transparent; /* Hide middle bar */
+         transition-delay: 0s;
+    }
+    .header-style-user .menu-toggle[aria-expanded="true"] .menu-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+     .header-style-user .menu-toggle[aria-expanded="true"] .menu-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+
+    /* Hide the main menu list initially */
+    .header-style-user .main-navigation ul#user-menu { /* Be specific */
+        display: none;
+        position: absolute;
+        top: 100%; /* Position below the header area */
+        left: 0;
+        width: 100%;
+        background-color: var(--user-header-bg);
+        border-top: 1px solid var(--user-header-border);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        margin: 0;
+        list-style: none;
+        z-index: 999;
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    /* Show the menu when toggled (assuming JS adds 'toggled-on' class to nav) */
+    .header-style-user .main-navigation.toggled-on ul#user-menu {
+        display: flex;
+    }
+
+    /* Adjust nav container itself */
+     .header-style-user .main-navigation {
+        order: 1; /* Ensure nav (toggle container) comes after logo if logo is left */
+        flex-grow: 0; /* Don't let container grow */
+        background-color: transparent;
+        padding: 0;
+        display: flex; /* Keep display flex for toggle alignment */
+        justify-content: flex-end; /* Align toggle button to the right within its container */
+        flex-basis: auto; /* Allow shrinking */
+    }
+
+    /* Adjust link styling within the mobile dropdown */
+    .header-style-user .main-navigation ul#user-menu a {
+        padding: 10px 20px; /* Adjust padding */
+        /* border-bottom: 1px solid var(--user-header-border); */ /* Use existing rule */
+        width: 100%;
+        text-align: right;
+        color: var(--user-header-text); /* Ensure correct color */
+        font-weight: normal; /* Adjust font weight if needed */
+    }
+    /* Use existing rule for border */
+    /* .header-style-user .main-navigation ul#user-menu li:last-child a {
+        border-bottom: none;
+    } */
+    .header-style-user .main-navigation ul#user-menu a::after {
+        display: none; /* No underline effect needed */
+    }
+
+     /* Ensure wrapper handles alignment correctly */
+    .header-style-user .main-header-wrapper {
+        gap: 10px; /* Reduce gap slightly */
+    }
+
+    /* Logo left: push nav toggle and actions right */
+    .header-style-user .header-layout-logo_left .main-navigation {
+        margin-left: auto; /* Push nav toggle container right */
+    }
+     .header-style-user .header-layout-logo_left .header-actions {
+        margin-left: 0; /* Actions follow nav toggle */
+        order: 3;
+    }
+
+    /* Logo center: Logo takes full width, nav and actions below or wrap */
+     .header-style-user .header-layout-logo_center .main-header-wrapper {
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center;
+    }
+    .header-style-user .header-layout-logo_center .site-branding {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        order: -1; /* Logo first */
+    }
+    .header-style-user .header-layout-logo_center .main-navigation {
+         order: 1;
+         margin-left: 0;
+    }
+    .header-style-user .header-layout-logo_center .header-actions {
+         order: 2;
+         margin-left: 10px; /* Add some space */
+    }
+
+    /* Logo right: Logo last, nav and actions left */
+    .header-style-user .header-layout-logo_right .site-branding {
+        order: 2; /* Logo last */
+        margin-left: auto; /* Push logo right */
+    }
+     .header-style-user .header-layout-logo_right .main-navigation {
+        order: 0; /* Nav first */
+        margin-left: 0;
+        justify-content: flex-start; /* Align toggle left */
+    }
+    .header-style-user .header-layout-logo_right .header-actions {
+        order: 1; /* Actions second */
+        margin-left: 10px;
+    }
+
+    /* Hide the separate search form component if search icon is used */
+    .header-style-user .search-form-component {
+        display: none;
+    }
+
+} /* End @media (max-width: 992px) */
+
+/* Add styles for 768px if needed, e.g., further reduce gaps/sizes */
+@media (max-width: 768px) {
+    .header-style-user .header-actions {
+        gap: 8px; /* Further reduce gap */
+    }
+    .header-style-user .custom-logo {
+        max-height: 45px; /* Further reduce logo height */
+    }
+     .header-style-user .main-header-area {
+        padding: 5px 0; /* Further reduce padding */
+    }
+}

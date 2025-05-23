@@ -1,0 +1,302 @@
+/*
+ * تنسيقات الهيدر الحديث (Modern Header Style - Style 2)
+ * يتم تحميله مع نمط الهيدر الحديث
+ *
+ * @package ProfessionalTheme
+ * @version 2.0
+ */
+
+/* تنسيقات خاصة بالهيدر الحديث فقط */
+
+/* شريط الإعلانات (إذا كان مختلفًا عن الشريط العلوي الأساسي) */
+.header-style-modern .announcement-bar {
+    background: var(--header-primary-color);
+    color: var(--header-text-light-color);
+    font-size: .9rem;
+    padding: .42rem 0;
+}
+
+.header-style-modern .announcement-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+}
+
+.header-style-modern .announcement-content {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+}
+
+/* الهيدر الأوسط (Logo + Search + Icons) */
+.header-style-modern .header-mid {
+    background: var(--header-background-color);
+    padding: .9rem 0;
+    border-bottom: 1px solid var(--header-border-color);
+}
+
+.header-style-modern .header-mid .wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.header-style-modern .logo-wrapper img {
+    max-height: 60px;
+}
+
+/* تخصيص صندوق البحث للنمط الحديث */
+.header-style-modern .search-form-component {
+    flex: 1;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 28px;
+    background-color: var(--header-background-color);
+}
+
+.header-style-modern .search-form-component .search-field {
+    width: 100%;
+    padding: .55rem 1rem;
+    font-size: .95rem;
+}
+
+.header-style-modern .search-form-component .search-submit {
+    position: absolute;
+    inset-inline-end: .55rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--header-primary-color);
+    padding: 0;
+    min-width: auto;
+}
+.header-style-modern .search-form-component .search-submit:hover {
+    background: none;
+    color: var(--header-secondary-color);
+}
+
+/* تخصيص أيقونات الهيدر للنمط الحديث */
+.header-style-modern .header-icons-component {
+    gap: 1rem;
+}
+
+.header-style-modern .header-icons-component .icon-link {
+    color: var(--header-text-color);
+    display: flex;
+    flex-direction: column; /* أيقونة فوق النص */
+    align-items: center;
+    font-size: 1.1rem;
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+.header-style-modern .header-icons-component .icon-link:hover {
+    color: var(--header-primary-color);
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.header-style-modern .header-icons-component .icon-text {
+    display: block; /* إظهار النص */
+    font-size: .72rem;
+    margin-top: .15rem;
+}
+
+.header-style-modern .header-icons-component .cart-count {
+    position: absolute;
+    top: -4px;
+    inset-inline-start: 14px; /* تعديل لـ RTL */
+    background: var(--header-accent-color);
+    color: #000; /* نص أسود على خلفية التمييز */
+    width: 18px;
+    height: 18px;
+    font-size: .65rem;
+    font-weight: 700;
+}
+
+/* الهيدر السفلي (Categories + Main Menu) */
+.header-style-modern .header-bot {
+    background: var(--header-primary-color);
+}
+
+.header-style-modern .header-bot .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4rem 0;
+}
+
+/* زر وقائمة الفئات */
+.header-style-modern .categories-menu-wrapper {
+    position: relative;
+}
+
+.header-style-modern .cat-btn {
+    background: var(--header-accent-color);
+    border: none;
+    color: #000;
+    padding: .42rem .85rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-weight: 700;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.header-style-modern .cat-menu {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    width: 240px;
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--header-transition);
+    box-shadow: 0 6px 12px rgba(0,0,0,.08);
+    z-index: 999;
+    list-style: none;
+    margin: 0;
+    padding: .3rem 0;
+}
+
+.header-style-modern .cat-menu.open {
+    max-height: 420px;
+    overflow: auto;
+}
+
+.header-style-modern .cat-menu li {
+    padding: .3rem 1rem;
+}
+
+.header-style-modern .cat-menu a {
+    color: var(--header-text-color);
+    font-size: .88rem;
+    text-decoration: none;
+}
+
+.header-style-modern .cat-menu a:hover {
+    color: var(--header-primary-color);
+}
+
+/* تخصيص القائمة الرئيسية للنمط الحديث */
+.header-style-modern .main-navigation ul {
+    gap: 1.2rem;
+}
+
+.header-style-modern .main-navigation > ul > li > a {
+    color: var(--header-text-light-color);
+    font-weight: 600;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    padding: .55rem 0;
+}
+
+.header-style-modern .main-navigation > ul > li > a:hover {
+    color: var(--header-accent-color);
+}
+
+/* أيقونات التواصل الاجتماعي في القائمة */
+.header-style-modern .social-icons-nav {
+    display: flex;
+    gap: 10px;
+    margin-inline-start: auto; /* دفعها لليسار في RTL */
+}
+
+.header-style-modern .social-icons-nav a {
+    color: var(--header-text-light-color);
+    font-size: 1.1rem;
+    transition: var(--header-transition);
+}
+
+.header-style-modern .social-icons-nav a:hover {
+    color: var(--header-accent-color);
+}
+
+/* الهيدر اللاصق */
+.sticky-head {
+    position: relative;
+    z-index: 999;
+    transition: var(--header-transition);
+}
+
+.sticky-head.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 3px 10px rgba(0,0,0,.12);
+    /* قد تحتاج لتعديل خلفية الهيدر اللاصق هنا */
+    /* background-color: var(--header-background-color); */
+}
+
+/* تجاوب الهيدر الحديث */
+@media(max-width: 991px){
+    .header-style-modern .header-mid .wrap {
+        flex-direction: column;
+        gap: .75rem;
+    }
+    .header-style-modern .header-bot .wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5rem;
+    }
+    .header-style-modern .main-navigation {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background: none;
+    }
+    .header-style-modern .main-navigation ul {
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--header-primary-color);
+        padding: 10px;
+        border-radius: 4px;
+        display: none; /* يتم إظهاره عبر JS */
+    }
+    .header-style-modern .main-navigation.toggled ul {
+        display: flex;
+    }
+    .header-style-modern .social-icons-nav {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+}
+@media (max-width: 768px) {
+  /* ترتيب أفقي لأيقونات الهيدر في الهاتف */
+  .header-style-modern .header-mid .header-icons-component {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .header-style-modern .header-mid .header-icons-component .icon-link {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-style-modern .mobile-search-toggle {
+    display: inline-block !important;
+    margin-bottom: 5px;
+  }
+
+  /* ضبط المسافات بين الشعار وباقي العناصر */
+  .header-style-modern .header-mid .wrap {
+    align-items: center;
+    gap: 10px;
+  }
+}
+

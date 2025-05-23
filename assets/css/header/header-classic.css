@@ -1,0 +1,312 @@
+/*
+ * تنسيقات الهيدر الكلاسيكي (Classic Header Style)
+ * يتم تحميله مع نمط الهيدر الكلاسيكي
+ *
+ * @package ProfessionalTheme
+ * @version 2.0
+ */
+
+/* تنسيقات خاصة بالهيدر الكلاسيكي فقط */
+.header-style-classic {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    padding: 0;
+}
+
+.header-style-classic .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    width: 100%;
+}
+
+/* تخصيص القائمة الرئيسية للنمط الكلاسيكي */
+.header-style-classic .main-navigation {
+    flex-grow: 1;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.header-style-classic .main-navigation ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 15px;
+}
+
+.header-style-classic .main-navigation a {
+    display: block;
+    padding: 10px 0;
+    color: var(--header-text);
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+}
+
+.header-style-classic .main-navigation a:hover {
+    color: var(--header-accent);
+}
+
+/* تأثير الخط أسفل القائمة */
+.header-style-classic .main-navigation a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background-color: var(--header-accent);
+    transition: width 0.3s ease;
+}
+
+.header-style-classic .main-navigation a:hover::after,
+.header-style-classic .main-navigation .current-menu-item a::after {
+    width: 100%;
+}
+
+/* تخصيص أيقونات الهيدر للنمط الكلاسيكي */
+.header-style-classic .header-icons-component .icon-link {
+    width: 42px;
+    height: 42px;
+    background-color: #f7f7f7;
+}
+
+.header-style-classic .header-icons-component .icon-link:hover {
+    background-color: var(--header-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تخصيص نافذة البحث المنبثقة للنمط الكلاسيكي */
+.header-style-classic .search-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.header-style-classic .search-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header-style-classic .search-popup-content {
+    width: 90%;
+    max-width: 650px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+    transform: translateY(-30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.header-style-classic .search-popup.active .search-popup-content {
+    transform: translateY(0);
+}
+
+.header-style-classic .search-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.header-style-classic .search-close:hover {
+    color: var(--header-accent);
+    transform: rotate(90deg);
+}
+
+/* تجاوب الهيدر الكلاسيكي */
+@media (max-width: 992px) {
+    .header-style-classic .header-wrapper {
+        flex-wrap: wrap;
+        padding: 15px 0;
+    }
+    
+    .header-style-classic .site-branding {
+        margin-right: auto;
+    }
+    
+    .header-style-classic .main-navigation {
+        order: 3;
+        flex-basis: 100%;
+        margin: 0;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-style-classic .header-icons-component {
+        margin-right: 15px;
+    }
+    
+    .header-style-classic .search-popup-content {
+        padding: 30px;
+    }
+}
+
+
+/* Improved Responsive Styles for Classic Header */
+@media (max-width: 992px) {
+    .header-style-classic .header-wrapper {
+        flex-wrap: wrap;
+        padding: 10px 0; /* Reduce padding */
+        position: relative; /* Needed for absolute positioning of menu */
+    }
+
+    .header-style-classic .site-branding {
+        margin-right: auto; /* Keep logo left */
+        flex-shrink: 0;
+    }
+
+    /* --- Menu Toggle Button --- */
+    .header-style-classic .menu-toggle {
+        display: inline-flex; /* Show toggle */
+        align-items: center;
+        background: none;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        order: 1; /* Position after logo */
+        color: var(--header-text); /* Ensure color */
+    }
+    .header-style-classic .menu-toggle .menu-icon {
+        display: block;
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background-color: currentColor;
+        transition: background-color 0s 0.3s ease;
+    }
+    .header-style-classic .menu-toggle .menu-icon::before,
+    .header-style-classic .menu-toggle .menu-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transition: transform 0.3s ease, top 0.3s ease;
+    }
+    .header-style-classic .menu-toggle .menu-icon::before {
+        top: -6px;
+    }
+    .header-style-classic .menu-toggle .menu-icon::after {
+        top: 6px;
+    }
+    /* Active toggle icon (X) */
+    .header-style-classic .menu-toggle[aria-expanded="true"] .menu-icon {
+        background-color: transparent;
+        transition-delay: 0s;
+    }
+    .header-style-classic .menu-toggle[aria-expanded="true"] .menu-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    .header-style-classic .menu-toggle[aria-expanded="true"] .menu-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    /* --- Main Navigation Mobile --- */
+    .header-style-classic .main-navigation {
+        order: 3; /* Last in the row */
+        flex-basis: 100%;
+        margin: 0;
+        /* Hide nav container itself, menu list will be absolute */
+        /* display: none; */
+        position: static; /* Reset position */
+        flex-grow: 0;
+    }
+
+    .header-style-classic .main-navigation ul#primary-menu {
+        display: none; /* Hide list by default */
+        position: absolute;
+        top: 100%; /* Position below header wrapper */
+        left: 0;
+        width: 100%;
+        background-color: var(--header-bg);
+        border-top: 1px solid var(--header-border, #eee);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        margin: 0;
+        list-style: none;
+        z-index: 998; /* Below search popup */
+        flex-direction: column;
+        gap: 0; /* Remove gap for vertical list */
+    }
+
+    /* Show menu when toggled */
+    .header-style-classic .main-navigation.toggled-on ul#primary-menu {
+        display: flex;
+    }
+
+    .header-style-classic .main-navigation ul#primary-menu a {
+        padding: 10px 20px;
+        border-bottom: 1px solid var(--header-border, #eee);
+        width: 100%;
+        text-align: right;
+        color: var(--header-text);
+        font-weight: normal;
+    }
+    .header-style-classic .main-navigation ul#primary-menu li:last-child a {
+        border-bottom: none;
+    }
+    .header-style-classic .main-navigation ul#primary-menu a::after {
+        display: none; /* No underline effect */
+    }
+
+    /* --- Header Icons Mobile --- */
+    .header-style-classic .header-icons-component {
+        order: 2; /* After toggle */
+        margin-left: auto; /* Push icons to the right */
+        margin-right: 0; /* Reset margin */
+        gap: 8px;
+    }
+    .header-style-classic .header-icons-component .icon-link {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Further adjustments if needed */
+    .header-style-classic .custom-logo {
+        max-height: 45px; /* Adjust logo size */
+    }
+    .header-style-classic .header-icons-component {
+        gap: 5px;
+    }
+     .header-style-classic .header-icons-component .icon-link {
+        width: 34px;
+        height: 34px;
+    }
+    .header-style-classic .search-popup-content {
+        padding: 25px;
+        width: 95%;
+    }
+}
+

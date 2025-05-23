@@ -1,0 +1,749 @@
+/* 
+Theme Name: Professional E-commerce Theme
+Theme URI: https://example.com/professional-ecommerce-theme
+Author: Professional Theme Developer
+Author URI: https://example.com
+Description: قالب متجر إلكتروني احترافي متكامل لووردبرس مع دعم كامل لـ WooCommerce. يتميز القالب بتصميم عصري وأنيق، وهيكل متجاوب بالكامل، وأربعة أنماط مختلفة للهيدر، وخيارات تخصيص متعددة.
+Version: 1.1 (التحسينات الأولية)
+Requires at least: 5.8
+Requires PHP: 7.4
+License: Commercial
+License URI: https://example.com/license
+Text Domain: professional-theme
+Domain Path: /languages
+Tags: e-commerce, rtl-language-support, custom-colors, custom-menu, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, theme-options, translation-ready, woocommerce
+*/
+
+:root {
+    --primary-color: #0f766e;
+    --primary-dark: #0c5e58;
+    --secondary-color: #2563eb;
+    --secondary-dark: #1e4fc9;
+    --accent-color: #f97316;
+    --accent-dark: #ea580c;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --font-main: 'Cairo', sans-serif;
+    --font-size-base: 16px;
+    --container-width: 1280px;
+}
+
+/* إعادة تعيين عامة وتطبيق Mobile-First */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* منع التمرير الأفقي بشكل عام */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    direction: rtl;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* التأكيد على منع التمرير الأفقي */
+}
+
+#page, .site {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible; /* السماح للمحتوى بالظهور خارج الحدود إذا لزم الأمر، ولكن يتم التحكم فيه بواسطة body */
+}
+
+.site-content, #content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.entry-content, .page-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* لإزالة المسافات السفلية المحتملة */
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button, input, select, textarea {
+    font-family: var(--font-main);
+    font-size: 1rem;
+}
+
+/* الحاوية */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* أنماط الهيدر المشتركة */
+.site-header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.site-description {
+    font-size: 0.875rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.main-navigation ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation li {
+    position: relative;
+}
+
+.main-navigation a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+}
+
+.main-navigation a:hover {
+    color: var(--primary-color);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons a {
+    margin-right: 1rem; /* قد يحتاج لتعديل في RTL */
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px; /* قد يحتاج لتعديل في RTL */
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 0.75rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* أنماط الهيدر الكلاسيكي */
+.header-style-1 .topbar {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+.header-style-1 .topbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-style-1 .topbar-contact {
+    display: flex;
+}
+
+.header-style-1 .topbar-contact-item {
+    margin-left: 1.5rem; /* RTL: margin-right */
+}
+
+.header-style-1 .topbar-social a {
+    color: white;
+    margin-right: 1rem; /* RTL: margin-left */
+}
+
+.header-style-1 .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+/* أنماط الهيدر الحديث للمتجر */
+.header-style-2 .announcement-bar {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.header-style-2 .header-main {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.header-style-2 .header-main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-style-2 .header-search {
+    flex: 1;
+    margin: 0 2rem;
+}
+
+.header-style-2 .search-form {
+    display: flex;
+    position: relative;
+}
+
+.header-style-2 .search-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.header-style-2 .search-submit {
+    position: absolute;
+    left: 0; /* RTL: right */
+    top: 0;
+    height: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 4px 4px 0; /* RTL: 4px 0 0 4px */
+    cursor: pointer;
+}
+
+.header-style-2 .categories-menu {
+    background-color: #f8f9fa;
+    padding: 0.75rem 0;
+}
+
+.header-style-2 .categories-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* للسماح بالالتفاف على الشاشات الصغيرة */
+}
+
+.header-style-2 .categories-list li {
+    margin: 0.25rem 1rem;
+}
+
+/* أنماط الصفحة الرئيسية */
+.section-padding {
+    padding: 2rem 0; /* تقليل الحشو للشاشات الصغيرة */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem; /* تقليل الهامش للشاشات الصغيرة */
+}
+
+.section-title {
+    font-size: 1.75rem; /* تقليل حجم الخط للشاشات الصغيرة */
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.section-description {
+    font-size: 1rem; /* تقليل حجم الخط للشاشات الصغيرة */
+    max-width: 90%; /* استخدام نسبة مئوية للمرونة */
+    margin: 0 auto;
+    color: #666;
+}
+
+/* قسم الفئات المميزة */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* تقليل الحد الأدنى للعرض */
+    gap: 15px; /* تقليل الفجوة */
+}
+
+.category-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-image {
+    height: 150px; /* تقليل الارتفاع */
+    background-size: cover;
+    background-position: center;
+}
+
+.category-no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    font-size: 2.5rem; /* تقليل حجم الخط */
+    color: #ccc;
+    height: 150px;
+}
+
+.category-title {
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.category-count {
+    display: block;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* قسم المنتجات */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* تعديل للتحكم بشكل أفضل */
+    gap: 20px; /* تقليل الفجوة */
+}
+
+.product-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 200px; /* تقليل الارتفاع */
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    height: 100%;
+    font-size: 2.5rem;
+    color: #ccc;
+}
+
+.product-content {
+    padding: 1rem;
+}
+
+.product-title {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-rating {
+    color: #ffc107;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.add-to-cart-button {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.add-to-cart-button:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.view-all-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.view-all-button {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.view-all-button:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* قسم العروض الخاصة */
+.offers-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: عمود واحد */
+    gap: 20px;
+}
+
+.offer-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.offer-large {
+    grid-row: auto; /* Mobile first: لا يوجد امتداد خاص */
+}
+
+.offer-image {
+    height: 250px; /* تعديل الارتفاع */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.offer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)); /* تعديل التدرج */
+}
+
+.offer-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    color: white;
+}
+
+.offer-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+}
+
+.offer-subtitle {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    opacity: 0.9;
+}
+
+.offer-button {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.offer-button:hover {
+    background-color: var(--accent-dark);
+    color: white;
+}
+
+/* قسم المميزات */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Mobile first: عمود أو عمودين */
+    gap: 20px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.feature-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+}
+
+.feature-description {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* قسم المدونة */
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: عمود واحد */
+    gap: 20px;
+}
+
+.blog-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    height: 180px;
+    font-size: 2.5rem;
+    color: #ccc;
+}
+
+.blog-content {
+    padding: 1rem;
+}
+
+.blog-meta {
+    display: flex;
+    flex-wrap: wrap; /* للسماح بالالتفاف */
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.blog-date, .blog-author {
+    margin-left: 0.75rem; /* RTL: margin-right */
+    margin-bottom: 0.25rem;
+}
+
+.blog-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+
+.blog-excerpt {
+    margin-bottom: 0.75rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.read-more {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* قسم الاشتراك في النشرة البريدية */
+.newsletter-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2.5rem 0;
+}
+
+.newsletter-wrapper {
+    display: flex;
+    flex-direction: column; /* Mobile first: عمودي */
+    align-items: center;
+    text-align: center;
+}
+
+.newsletter-content {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+}
+
+.newsletter-description {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.newsletter-form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.newsletter-form-wrapper {
+    display: flex;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px 0 0 4px; /* RTL: 0 4px 4px 0 */
+    font-size: 0.9rem;
+}
+
+.newsletter-submit {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0; /* RTL: 4px 0 0 4px */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.newsletter-submit:hover {
+    background-color: var(--accent-dark);
+}
+
+/* الفوتر */
+.site-footer {
+    background-color: #222;
+    color: white;
+    padding: 2.5rem 0 0;
+}
+
+.footer-widgets {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: عمود واحد */
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.footer-widget-title {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: white;
+}
+
+.footer-widget ul {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-widget li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-widget a {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.footer-widget a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    background-color: #111;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.footer-copyright {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/* تجاوب الأجهزة اللوحية والشاشات الأكبر - يتم تحميلها من responsive.css */
+/* سيتم نقل الأنماط الخاصة بالاستعلامات @media إلى ملف responsive.css */
+

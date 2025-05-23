@@ -1,0 +1,262 @@
+/**
+ * إصلاحات إضافية لمشكلة عرض صفحة أنماط الهيدر
+ * 
+ * هذا الملف يحتوي على إصلاحات إضافية لضمان عرض صفحة أنماط الهيدر بشكل صحيح
+ * مع الحفاظ على توازن تخطيط لوحة التحكم
+ * 
+ * @package ProfessionalTheme
+ */
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر */
+body.wp-customizer {
+    overflow: hidden !important;
+}
+
+.wp-full-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.wp-full-overlay-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 300px !important;
+    overflow: auto !important;
+    background: #fff !important;
+    z-index: 10 !important;
+}
+
+.expanded .wp-full-overlay-footer {
+    left: 300px !important;
+}
+
+.wp-full-overlay.expanded {
+    margin-left: 300px !important;
+}
+
+.wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+    margin-left: -300px !important;
+}
+
+.wp-full-overlay.collapsed {
+    margin-left: 0 !important;
+}
+
+.wp-full-overlay-main {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.wp-full-overlay-main iframe {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .wp-full-overlay-sidebar {
+        width: 260px !important;
+    }
+    
+    .expanded .wp-full-overlay-footer {
+        left: 260px !important;
+    }
+    
+    .wp-full-overlay.expanded {
+        margin-left: 260px !important;
+    }
+    
+    .wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+        margin-left: -260px !important;
+    }
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر على الشاشات الصغيرة جدًا */
+@media (max-width: 480px) {
+    .wp-full-overlay-sidebar {
+        width: 100% !important;
+    }
+    
+    .expanded .wp-full-overlay-footer {
+        left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .wp-full-overlay.expanded {
+        margin-left: 0 !important;
+    }
+    
+    .wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+        margin-left: -100% !important;
+    }
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر - وضع سطح المكتب */
+.preview-desktop .wp-full-overlay-main {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر - وضع الجهاز اللوحي */
+.preview-tablet .wp-full-overlay-main {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر - وضع الجوال */
+.preview-mobile .wp-full-overlay-main {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* إصلاح مشكلة العرض في صفحة تخصيص الهيدر - عام */
+.wp-customizer .preview-desktop .wp-full-overlay-main,
+.wp-customizer .preview-tablet .wp-full-overlay-main,
+.wp-customizer .preview-mobile .wp-full-overlay-main {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+/* تم إزالة الأنماط التي تؤثر على توازن لوحة التحكم */
+/*
+.customize-section-title,
+.customize-control {
+    padding: 12px 15px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.wp-customizer .customize-control-title {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+}
+
+.wp-customizer .customize-control-description {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+}
+
+.wp-customizer .customize-control {
+    margin-bottom: 16px !important;
+}
+
+.wp-customizer textarea {
+    width: 100% !important;
+    min-height: 120px !important;
+}
+
+.wp-customizer select {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.wp-customizer .wp-picker-container {
+    width: 100% !important;
+}
+
+.wp-customizer .button {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+}
+
+.header-preview-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+}
+
+.header-preview-container img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+.header-options-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.header-option {
+    flex: 1 0 calc(50% - 10px) !important;
+    min-width: 150px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.header-option:hover {
+    border-color: #0073aa !important;
+}
+
+.header-option.selected {
+    border-color: #0073aa !important;
+    background-color: #f0f8ff !important;
+}
+
+.header-option img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+}
+
+.header-option-title {
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+@media (max-width: 768px) {
+    .header-option {
+        flex: 1 0 100% !important;
+    }
+}
+*/
+

@@ -1,0 +1,258 @@
+/*
+ * تنسيقات الهيدر المتمركز (Centered Header Style)
+ * يتم تحميله مع نمط الهيدر المتمركز
+ *
+ * @package ProfessionalTheme
+ * @version 2.0
+ */
+
+/* تنسيقات خاصة بالهيدر المتمركز فقط */
+
+/* شريط التواصل الاجتماعي العلوي */
+.header-style-centered .social-bar {
+  background: #f6f7fb;
+  padding: .4rem 0;
+}
+
+.header-style-centered .social-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-style-centered .contact-icons a {
+  margin-inline-end: .5rem;
+  font-size: 1.3rem;
+  transition: var(--header-transition);
+}
+
+/* ألوان أيقونات التواصل الاجتماعي */
+.header-style-centered .contact-icons a.facebook   { color: #3b5998; }
+.header-style-centered .contact-icons a.twitter    { color: #1da1f2; }
+.header-style-centered .contact-icons a.instagram  { color: #e1306c; }
+.header-style-centered .contact-icons a.linkedin   { color: #0077b5; }
+.header-style-centered .contact-icons a.youtube    { color: #ff0000; }
+.header-style-centered .contact-icons a.whatsapp   { color: #25d366; }
+.header-style-centered .contact-icons a.telegram   { color: #0088cc; }
+.header-style-centered .contact-icons a.snapchat   { color: #fffc00; }
+.header-style-centered .contact-icons a.tiktok     { color: #000; }
+
+/* قائمة منسدلة في الشريط العلوي */
+.header-style-centered .main-menu-dropdown {
+  position: relative;
+}
+
+.header-style-centered .main-menu-dropdown .menu-title > a {
+  font-weight: bold;
+  color: var(--header-text-color);
+  text-decoration: none;
+}
+
+.header-style-centered .main-menu-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 999;
+  border-radius: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-style-centered .main-menu-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.header-style-centered .dropdown-content li a {
+  display: block;
+  padding: .6rem 1rem;
+  text-decoration: none;
+  color: var(--header-text-color);
+}
+
+.header-style-centered .dropdown-content li a:hover {
+  background: #f6f7fb;
+}
+
+/* الهيدر الأوسط (Logo + Icons) */
+.header-style-centered .header-mid {
+  background: #fff;
+  padding: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-style-centered .centered-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.header-style-centered .logo-wrapper {
+  text-align: center;
+}
+
+.header-style-centered .logo-wrapper img {
+  max-height: 60px;
+  transition: transform .3s;
+}
+
+.header-style-centered .logo-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+/* أيقونات على جانبي الشعار */
+.header-style-centered .left-icons, 
+.header-style-centered .right-icons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1.2rem;
+}
+
+.header-style-centered .left-icons { 
+  right: calc(50% + 200px); 
+}
+
+.header-style-centered .right-icons { 
+  left: calc(50% + 200px); 
+}
+
+.header-style-centered .left-icons a, 
+.header-style-centered .right-icons a {
+  font-size: 1.35rem;
+  transition: var(--header-transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ألوان مخصصة للأيقونات */
+.header-style-centered .left-icons a:nth-child(1) { color: #f68b1e; }   /* سلة */
+.header-style-centered .left-icons a:nth-child(2) { color: #1363DF; }   /* بحث */
+.header-style-centered .right-icons a:nth-child(1) { color: #4CAF50; }  /* حساب */
+.header-style-centered .right-icons a:nth-child(2) { color: #E91E63; }  /* اتصال */
+
+.header-style-centered .left-icons a:hover, 
+.header-style-centered .right-icons a:hover {
+  opacity: 0.8;
+}
+
+/* شريط الإعلانات */
+.header-style-centered .announcement-bar {
+  background: var(--header-primary-color);
+  color: #fff;
+  padding: .6rem 0;
+}
+
+.header-style-centered .announcement-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-style-centered .announcement-button {
+  background: var(--header-accent-color);
+  color: #000;
+  padding: .4rem 1.2rem;
+  font-weight: bold;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.header-style-centered .announcement-button:hover {
+  opacity: 0.9;
+}
+
+/* قسم الفئات */
+.header-style-centered .header-bot {
+  background: var(--header-primary-color);
+}
+
+.header-style-centered .header-bot .wrap {
+  padding: .5rem 0;
+  position: relative;
+}
+
+.header-style-centered .cat-btn {
+  background: var(--header-accent-color);
+  color: #000;
+  padding: .4rem .9rem;
+  font-weight: bold;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header-style-centered .cat-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+  display: none;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-style-centered .cat-btn:hover + .cat-menu,
+.header-style-centered .cat-menu:hover {
+  display: block;
+}
+
+.header-style-centered .cat-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: .4rem 0;
+}
+
+.header-style-centered .cat-menu li {
+  padding: .5rem 1rem;
+}
+
+.header-style-centered .cat-menu a {
+  color: var(--header-text-color);
+  text-decoration: none;
+}
+
+.header-style-centered .cat-menu a:hover {
+  color: var(--header-primary-color);
+}
+
+/* تجاوب الهيدر المتمركز */
+@media (max-width: 768px) {
+  .header-style-centered .left-icons,
+  .header-style-centered .right-icons {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    position: static !important;
+    transform: none !important;
+    margin-top: 10px;
+    gap: 1rem !important;
+  }
+  
+  .header-style-centered .social-bar .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .header-style-centered .announcement-bar .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .header-style-centered .announcement-button {
+    margin-top: 5px;
+  }
+}
