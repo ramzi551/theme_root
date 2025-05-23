@@ -31,7 +31,7 @@ if ( ! $footer_show_menu ) {
 
     <footer id="colophon" class="site-footer footer-style-<?php echo esc_attr( $footer_style ); ?>">
         <?php
-// ===== منامنامن تعريف روابط الشبكات الاجتماعية مرة واحدة =====
+// === تعريف روابط الشبكات الاجتماعية مرة واحدة =====
 $social_networks = array(
     'facebook'  => array( 'icon' => 'fab fa-facebook-f',  'url' => get_theme_mod( 'social_facebook' ) ),
     'twitter'   => array( 'icon' => 'fab fa-twitter',     'url' => get_theme_mod( 'social_twitter' ) ),
