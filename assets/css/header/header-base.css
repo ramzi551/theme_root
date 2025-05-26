@@ -485,3 +485,99 @@
     filter: brightness(1.1);
     transform: translateY(-2px);
 }
+
+
+/* --- Search Popup --- */
+.search-popup {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it's on top */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.search-popup.is-visible {
+    display: flex; /* Show when active using flex for centering */
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-popup-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.search-popup.is-visible .search-popup-content {
+    transform: scale(1);
+}
+
+.search-popup .search-close {
+    position: absolute;
+    top: 15px;
+    right: 15px; /* Adjust for RTL if needed */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+.search-popup .search-close:hover {
+    color: #000;
+}
+
+/* Adjust search form inside popup */
+.search-popup .search-form-component {
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Less rounded maybe */
+}
+.search-popup .search-form-component .search-field {
+    padding: 12px 15px;
+    font-size: 16px;
+}
+.search-popup .search-form-component .search-submit {
+    padding: 0 25px;
+    font-size: 16px;
+}
+
+/* Ensure search icon is clickable */
+.icon-link.icon-search,
+.search-popup-trigger {
+    cursor: pointer;
+}
+
+
+
+/* --- Microinteraction: Cart Icon Bounce --- */
+@keyframes cartBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.icon-link.icon-cart.bounce {
+    animation: cartBounce 0.5s ease-in-out;
+    /* Optional: Add a temporary background color change */
+    /* background-color: var(--header-accent-dark, #ea580c) !important; */
+    /* transition: background-color 0.1s ease !important; */
+}
+
