@@ -42,7 +42,14 @@ $wrapper_class = isset( $args['wrapper_class'] ) ? esc_attr( $args['wrapper_clas
 $show_text     = isset( $args['show_icon_text'] ) && $args['show_icon_text'];
 
 $account_url  = function_exists('wc_get_page_permalink') ? wc_get_page_permalink( 'myaccount' ) : '#';
-$wishlist_url = class_exists( 'YITH_WCWL' ) ? YITH_WCWL()->get_wishlist_url() : '#';
+$wishlist_url = '#';
+if ( function_exists( 'tinv_url_wishlist_default' ) ) {
+    $ti_url = tinv_url_wishlist_default();
+    if ( ! empty( $ti_url ) ) {
+        $wishlist_url = $ti_url;
+    }
+}
+
 $cart_url     = function_exists('wc_get_cart_url') ? wc_get_cart_url() : '#';
 $search_url   = '#';
 $search_trigger_class = 'search-popup-trigger';
@@ -70,19 +77,28 @@ if ( $active_header_style === 'modern' ) {
         </a>
     <?php endif; ?>
 
-    <?php if ( $icons_to_show['wishlist'] ) : ?>
-        <a href="<?php echo esc_url( $wishlist_url ); ?>" class="icon-link icon-wishlist" aria-label="<?php esc_attr_e( 'المفضلة', 'professional-theme' ); ?>">
-            <i class="fas fa-heart"></i>
-            <?php if ( $show_text ) : ?><span class="icon-text"><?php esc_html_e( 'المفضلة', 'professional-theme' ); ?></span><?php endif; ?>
-        </a>
-    <?php endif; ?>
+<?php if ( $icons_to_show['wishlist'] ) : ?>
+    <a href="<?php echo esc_url( $wishlist_url ); ?>" class="icon-link icon-wishlist" aria-label="<?php esc_attr_e( 'المفضلة', 'professional-theme' ); ?>">
+        <i class="fas fa-heart"></i>
+        <?php if ( $show_text ) : ?><span class="icon-text"><?php esc_html_e( 'المفضلة', 'professional-theme' ); ?></span><?php endif; ?>
+        <?php
+        // عداد المفضلة من TI Wishlist
+        if ( function_exists( 'tinv_get_option' ) && tinv_get_option( 'top_wishlist', 'show_counter' ) ) {
+            echo do_shortcode('[ti_wishlist_counter]');
+        }
+        ?>
+    </a>
+<?php endif; ?>
+
 
     <?php if ( $icons_to_show['cart'] ) : ?>
         <a href="<?php echo esc_url( $cart_url ); ?>" class="icon-link icon-cart" aria-label="<?php esc_attr_e( 'سلة التسوق', 'professional-theme' ); ?>">
             <i class="fas fa-shopping-cart"></i>
             <?php if ( $show_text ) : ?><span class="icon-text"><?php esc_html_e( 'السلة', 'professional-theme' ); ?></span><?php endif; ?>
             <?php if ( function_exists('WC') && WC()->cart ) : ?>
-                <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+
+                <span class="cart-count count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+
             <?php endif; ?>
         </a>
     <?php endif; ?>
