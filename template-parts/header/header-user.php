@@ -1,9 +1,9 @@
 <?php
 /**
- * القالب الجزئي لهيدر المستخدم المخصص (نسخة محسنة v4.1)
+ * القالب الجزئي لهيدر المستخدم المخصص (نسخة محسنة v4.3)
  *
  * @package ProfessionalTheme
- * @version 4.1
+ * @version 4.3 - إزالة نموذج البحث الدائم، الاعتماد على الأيقونة والنافذة المنبثقة فقط
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -13,7 +13,7 @@ $show_topbar        = get_theme_mod( 'user_header_show_topbar', true );
 $header_layout      = get_theme_mod( 'user_header_layout', 'logo_left_menu_center_icons_right' );
 $show_tagline       = get_theme_mod( 'user_header_show_tagline', false );
 $show_menu          = get_theme_mod( 'user_header_show_menu', true );
-$show_search        = get_theme_mod( 'user_header_show_search', true );
+$show_search        = get_theme_mod( 'user_header_show_search', true ); // التحكم في ظهور أيقونة البحث
 $show_account       = get_theme_mod( 'user_header_show_account', true );
 $show_wishlist      = get_theme_mod( 'user_header_show_wishlist', false );
 $show_cart          = get_theme_mod( 'user_header_show_cart', true );
@@ -46,6 +46,7 @@ if ( $show_shadow ) $header_classes[] = 'has-shadow';
 <header id="masthead" class="<?php echo esc_attr( implode( ' ', $header_classes ) ); ?>" style="font-size: <?php echo esc_attr( $font_size ); ?>px; border-radius: <?php echo esc_attr( $border_radius ); ?>px;">
 
     <?php if ( $show_topbar ) :
+        // الكود الأصلي للشريط العلوي
         $email = get_theme_mod( 'user_header_email', 'info@example.com' );
         $phone = get_theme_mod( 'user_header_phone', '+1234567890' );
         $social_networks = ['facebook', 'twitter', 'instagram', 'linkedin', 'youtube', 'whatsapp', 'snapchat', 'tiktok', 'telegram'];
@@ -61,12 +62,11 @@ if ( $show_shadow ) $header_classes[] = 'has-shadow';
         <div class="container">
             <div class="user-topbar-left">
                <?php if ( $email ) : ?>
-    <a href="mailto:<?php echo esc_attr( $email ); ?>" aria-label="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-<?php endif; ?>
-<?php if ( $phone ) : ?>
-    <a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>" aria-label="رقم الهاتف"><i class="fas fa-phone"></i></a>
-<?php endif; ?>
-
+                   <a href="mailto:<?php echo esc_attr( $email ); ?>" aria-label="<?php esc_attr_e('البريد الإلكتروني', 'professional-theme'); ?>"><i class="fas fa-envelope"></i></a>
+               <?php endif; ?>
+               <?php if ( $phone ) : ?>
+                   <a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>" aria-label="<?php esc_attr_e('رقم الهاتف', 'professional-theme'); ?>"><i class="fas fa-phone"></i></a>
+               <?php endif; ?>
             </div>
             <?php if ( ! empty( $social_links_html ) ) : ?>
             <div class="user-topbar-right social-icons">
@@ -83,12 +83,21 @@ if ( $show_shadow ) $header_classes[] = 'has-shadow';
 
                 <!-- الشعار -->
                 <div class="site-branding logo-<?php echo esc_attr( $logo_position ); ?>">
-                    <?php if ( $custom_logo_url ) : ?>
-                        <img src="<?php echo esc_url( $custom_logo_url ); ?>" alt="Logo" class="custom-logo" style="max-height: <?php echo esc_attr( $logo_height ); ?>px;">
-                    <?php endif; ?>
-                    <?php if ( $show_tagline ) : ?>
-                        <p class="site-description"><?php bloginfo( 'description' ); ?></p>
-                    <?php endif; ?>
+                    <?php 
+                    // الكود الأصلي للشعار
+                    if ( $custom_logo_url ) {
+                        echo '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">';
+                        echo '<img src="' . esc_url( $custom_logo_url ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="custom-logo" style="max-height: ' . esc_attr( $logo_height ) . 'px;">';
+                        echo '</a>';
+                    } else {
+                        if ( display_header_text() ) {
+                            echo '<h1 class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></h1>';
+                        }
+                    }
+                    if ( $show_tagline && display_header_text() ) {
+                        echo '<p class="site-description">' . esc_html( get_bloginfo( 'description' ) ) . '</p>';
+                    }
+                    ?>
                 </div>
 
                 <?php if ( $show_menu && strpos( $header_layout, '_menu_below' ) === false ) : ?>
@@ -109,22 +118,27 @@ if ( $show_shadow ) $header_classes[] = 'has-shadow';
                 <?php endif; ?>
 
                 <div class="header-actions">
+                    <?php // ✅ عرض أيقونة البحث المنبثقة إذا كانت مفعلة ?>
                     <?php if ( $show_search ) : ?>
                     <div class="header-search-icon">
-                        <a href="#" class="search-toggle" aria-label="<?php esc_attr_e( 'فتح البحث', 'professional-theme' ); ?>"><i class="fas fa-search"></i></a>
+                        <?php // ✅ التأكد من استخدام الكلاس الصحيح لتشغيل النافذة المنبثقة ?>
+                        <a href="#" class="icon-link icon-search search-popup-trigger" aria-label="<?php esc_attr_e( 'بحث', 'professional-theme' ); ?>"><i class="fas fa-search"></i></a>
                     </div>
                     <?php endif; ?>
 
-                    <?php get_template_part( 'template-parts/header/components/header-icons', '', array(
-                        'wrapper_class' => 'header-icons-component',
+                    <?php 
+                    // ✅ استدعاء باقي الأيقونات (الحساب، المفضلة، السلة) 
+                    get_template_part( 'template-parts/header/components/header-icons', '', array(
+                        'wrapper_class' => 'header-icons-component', 
                         'icons' => array(
-                            'search'   => false,
+                            'search'   => false, // مهم: لا تستدعي أيقونة البحث هنا مرة أخرى
                             'account'  => $show_account,
                             'wishlist' => $show_wishlist,
                             'cart'     => $show_cart,
                         ),
                         'show_icon_text' => false,
-                    ) ); ?>
+                    ) ); 
+                    ?>
 
                     <?php if ( $show_custom_button && $custom_button_text && $custom_button_link ) : ?>
                     <a href="<?php echo esc_url( $custom_button_link ); ?>" class="custom-button button">
@@ -158,24 +172,34 @@ if ( $show_shadow ) $header_classes[] = 'has-shadow';
     </div>
     <?php endif; ?>
 
-    <?php if ( get_theme_mod( 'enable_search_popup', true ) ) : ?>
-    <div class="search-popup-overlay" style="display: none;">
+    <?php // ✅ الإبقاء على نافذة البحث المنبثقة المخفية ?>
+    <?php if ( $show_search && get_theme_mod( 'enable_search_popup', true ) ) : ?>
+    <!-- نافذة البحث المنبثقة -->
+    <div class="search-popup">
         <div class="search-popup-content">
-            <button class="close-search-popup" aria-label="<?php esc_attr_e( 'إغلاق البحث', 'professional-theme' ); ?>">&times;</button>
-            <?php get_search_form(); ?>
+            <button class="search-close" aria-label="<?php esc_attr_e( 'إغلاق البحث', 'professional-theme' ); ?>">
+                <i class="fas fa-times"></i>
+            </button>
+            <?php 
+            // ✅ تحميل نموذج البحث هنا داخل النافذة المنبثقة
+            get_template_part( 'template-parts/header/components/search-form', '', array(
+                'form_id' => 'popup-search-form-user', 
+                'input_id' => 'popup-search-input-user',
+                'placeholder' => __( 'ابحث في الموقع...', 'professional-theme' ),
+                'wrapper_class' => 'search-form-component popup-search-form',
+                'button_text' => __( 'بحث', 'professional-theme' )
+            ) ); 
+            ?>
         </div>
     </div>
     <?php endif; ?>
 
-</header>
+</header><!-- #masthead -->
 
 <?php
-// عرض قسم الهيرو فقط إذا كان مفعلاً من إعدادات التخصيص **وكانت هذه هي الصفحة الرئيسية**
+// عرض قسم الهيرو (الكود الأصلي)
 if ( is_front_page() && get_theme_mod( 'user_header_show_hero', false ) ) {
-    // يمكنك أيضًا إضافة شرط WooCommerce هنا إذا أردت:
-    // if ( is_front_page() && class_exists('WooCommerce') && get_theme_mod( 'user_header_show_hero', false ) ) {
-    get_template_part( 'template-parts/header/hero-section' ); // هذا يستدعي نفس ملف الهيرو العام
-                                                                // إذا كان لديك ملف هيرو مختلف لهيدر المستخدم، استدعه هنا
-                                                                // مثلاً: get_template_part( 'template-parts/header/hero', 'user-specific' );
+    get_template_part( 'template-parts/header/hero-section' ); 
 }
 ?>
+
