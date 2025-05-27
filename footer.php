@@ -14,17 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 $footer_style     = get_theme_mod( 'footer_style', 'standard' );
 $footer_show_menu = get_theme_mod( 'footer_show_menu', true );
 
-// 2) خروج مبكر إذا تم إلغاء إظهار قائمة الفوتر
-if ( ! $footer_show_menu ) {
-    ?></div><!-- #content -->
-    <!-- تم إلغاء عرض الفوتر بحسب الإعداد -->
-    </footer><!-- #colophon -->
-</div><!-- #page -->
-<?php
-    wp_footer();
-    echo "\n</body>\n</html>";
-    return;
-}
 ?>
 
     </div><!-- #content -->
@@ -126,7 +115,7 @@ $social_networks = array(
                                 ?>
                             </div>
                             
-                            <?php if ( has_nav_menu( 'footer' ) ) : ?>
+<?php if ( get_theme_mod('footer_show_menu', true) && has_nav_menu( 'footer' ) ) : ?>
                                 <nav class="footer-navigation">
                                     <?php
                                     wp_nav_menu( array(
@@ -189,7 +178,7 @@ $social_networks = array(
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ( has_nav_menu( 'footer' ) ) : ?>
+<?php if ( get_theme_mod('footer_show_menu', true) && has_nav_menu( 'footer' ) ) : ?>
                                 <nav class="footer-navigation">
                                     <?php
                                     wp_nav_menu( array(
@@ -324,7 +313,7 @@ $social_networks = array(
                                 ?>
                             </div>
 
-                            <?php if ( has_nav_menu( 'footer' ) ) : ?>
+<?php if ( get_theme_mod('footer_show_menu', true) && has_nav_menu( 'footer' ) ) : ?>
                                 <nav class="footer-navigation">
                                     <?php
                                     wp_nav_menu( array(
@@ -491,7 +480,7 @@ $payment_methods = array(
                                 ?>
                             </div>
 
-                            <?php if ( has_nav_menu( 'footer' ) ) : ?>
+<?php if ( get_theme_mod('footer_show_menu', true) && has_nav_menu( 'footer' ) ) : ?>
                                 <nav class="footer-navigation">
                                     <?php
                                     wp_nav_menu( array(
@@ -531,63 +520,55 @@ $payment_methods = array(
                     </div>
                 </div>
                 
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="footer-bottom-wrapper">
-                            <?php if ( get_theme_mod( 'footer_show_logo', true ) ) : ?>
-                                <div class="footer-logo">
-                                    <?php
-                                    $footer_logo_id = get_theme_mod( 'footer_logo' );
-                                    if ( $footer_logo_id ) {
-                                        echo wp_get_attachment_image( $footer_logo_id, 'medium', false, array( 'class' => 'custom-footer-logo' ) );
-                                    } else {
-                                        the_custom_logo();
-                                    }
-                                    ?>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <div class="copyright">
-                                <?php
-                                echo wp_kses_post( str_replace( '{year}', date( 'Y' ), get_theme_mod(
-                                    'footer_copyright_text',
-                                    sprintf( __( '© %s - جميع الحقوق محفوظة', 'professional-theme' ), date( 'Y' ) . ' ' . get_bloginfo( 'name' ) )
-                                ) ) );
-                                ?>
-                            </div>
-                            
-                            <?php if ( has_nav_menu( 'footer' ) ) : ?>
-                                <nav class="footer-navigation">
-                                    <?php
-                                    wp_nav_menu( array(
-                                        'theme_location' => 'footer',
-                                        'menu_id'        => 'footer-menu',
-                                        'container'      => false,
-                                        'depth'          => 1,
-                                        'fallback_cb'    => false,
-                                    ) );
-                                    ?>
-                                </nav>
-                            <?php endif; ?>
-                            
-                            <?php if ( get_theme_mod( 'footer_show_social', true ) ) : ?>
-                                <div class="footer-social-icons">
-                                    <?php
-                                    foreach ( $social_networks as $data ) {
-                                        if ( ! empty( $data['url'] ) ) {
-                                            printf(
-                                                '<a href="%1$s" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="%2$s"></i></a>',
-                                                esc_url( $data['url'] ),
-                                                esc_attr( $data['icon'] )
-                                            );
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="footer-bottom-wrapper">
+
+            <?php if ( get_theme_mod( 'footer_show_logo', true ) ) : ?>
+                <div class="footer-logo">
+                    <?php
+                    $footer_logo_id = get_theme_mod( 'footer_logo' );
+                    if ( $footer_logo_id ) {
+                        echo wp_get_attachment_image( $footer_logo_id, 'medium', false, array( 'class' => 'custom-footer-logo' ) );
+                    } else {
+                        the_custom_logo();
+                    }
+                    ?>
                 </div>
+            <?php endif; ?>
+
+            <div class="copyright">
+                <?php
+                echo wp_kses_post( str_replace( '{year}', date( 'Y' ), get_theme_mod(
+                    'footer_copyright_text',
+                    sprintf( __( '© %s - جميع الحقوق محفوظة', 'professional-theme' ), date( 'Y' ) . ' ' . get_bloginfo( 'name' ) )
+                ) ) );
+                ?>
+            </div>
+
+            <?php if ( get_theme_mod('footer_show_menu', true) && has_nav_menu( 'footer' ) ) : ?>
+                <nav class="footer-navigation">
+                    <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'footer',
+                        'menu_id'        => 'footer-menu',
+                        'container'      => false,
+                        'depth'          => 1,
+                        'fallback_cb'    => false,
+                    ) );
+                    ?>
+                </nav>
+            <?php endif; ?>
+
+            <?php if ( get_theme_mod( 'footer_show_social', true ) ) : ?>
+                <div class="footer-social-icons">
+                    <!-- social icons here -->
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
                 <?php
                 break;
         }
