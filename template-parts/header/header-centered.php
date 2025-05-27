@@ -76,20 +76,36 @@ $main_header_text_color = get_theme_mod( 'main_header_text_color', '#000000' );
     ?>
     <!-- قسم الفئات -->
     <div class="header-bot" style="background-color: <?php echo esc_attr( $main_header_bg_color ); ?>; border-top: 1px solid <?php echo esc_attr( professional_theme_adjust_brightness($main_header_bg_color, -20) ); ?>;">
-        <div class="container">
-            <div class="wrap">
-                <button class="cat-btn" style="color: <?php echo esc_attr( $main_header_text_color ); ?>;" aria-expanded="false" aria-controls="centered-cat-menu">
-                    <i class="fas fa-bars"></i><span><?php esc_html_e('فئات المنتجات', 'professional-theme'); ?></span><i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="cat-menu" id="centered-cat-menu" style="background-color: <?php echo esc_attr( $main_header_bg_color ); ?>;">
-                    <?php
-                        echo '<ul>';
-                        wp_list_categories( [ 'taxonomy' => 'product_cat', 'title_li' => '', 'hide_empty' => 0 ] );
-                        echo '</ul>';
-                    ?>
-                </div>
-            </div>
+        <div class="wrap centered-menu-wrap">
+    <div class="centered-categories">
+        <button class="cat-btn" aria-expanded="false" aria-controls="centered-cat-menu">
+            <i class="fas fa-bars"></i>
+            <span><?php esc_html_e('فئات المنتجات', 'professional-theme'); ?></span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="cat-menu" id="centered-cat-menu">
+            <?php
+                echo '<ul>';
+                wp_list_categories( [ 'taxonomy' => 'product_cat', 'title_li' => '', 'hide_empty' => 0 ] );
+                echo '</ul>';
+            ?>
         </div>
+    </div>
+
+    <?php if ( has_nav_menu( 'centered_top_menu' ) ) : ?>
+        <nav class="main-navigation centered-menu" aria-label="<?php esc_attr_e('القائمة الرئيسية', 'professional-theme'); ?>">
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'centered_top_menu',
+                'menu_class'     => 'centered-menu-items',
+                'container'      => false,
+                'depth'          => 2,
+                'fallback_cb'    => false,
+            ) );
+            ?>
+        </nav>
+    <?php endif; ?>
+</div>
     </div>
     <?php endif; ?>
 
