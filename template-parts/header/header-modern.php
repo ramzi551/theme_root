@@ -115,16 +115,16 @@ $announcement_text = get_theme_mod( 'announcement_text', 'عروض خاصة! خ�
                     <!-- ✅ القائمة الرئيسية -->
                     <nav class="main-navigation main-menu-dropdown" aria-label="القائمة الرئيسية">
                         <div class="menu-title">
-                            <a href="javascript:void(0);"><?php esc_html_e('الرئيسية', 'professional-theme'); ?> <i class="fas fa-angle-down"></i></a>
-                            <?php
-                            wp_nav_menu([
-                                'theme_location' => 'modern_header_menu',
-                                'container' => false,
-                                'menu_class' => 'dropdown-content',
-                                'fallback_cb' => '__return_empty_string'
-                            ]);
-                            ?>
-                        </div>
+    <?php
+    wp_nav_menu([
+        'theme_location' => 'modern_header_menu',
+        'container' => false,
+        'menu_class' => 'dropdown-content',
+        'fallback_cb' => '__return_empty_string'
+    ]);
+    ?>
+</div>
+
                     </nav>
 
                 </div>
