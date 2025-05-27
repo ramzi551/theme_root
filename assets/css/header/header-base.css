@@ -581,3 +581,11 @@
     /* transition: background-color 0.1s ease !important; */
 }
 
+/* إجبار عناصر القائمة المنسدلة على الترتيب عموديًا */
+.main-navigation ul ul.sub-menu {
+  display: flex;
+  flex-direction: column; /* هام: يجعل العناصر عمودية */
+  white-space: nowrap;     /* يمنع انقسام النصوص */
+  max-height: unset;       /* إلغاء أي حد أقصى للطول */
+  overflow: visible;       /* تأكد من عدم القص */
+}
