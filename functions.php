@@ -194,10 +194,6 @@ require get_template_directory() . '/inc/performance-apply.php';
 require get_template_directory() . '/inc/footer-apply.php';
 require get_template_directory() . '/inc/user-header-colors-apply.php';
 
-// تحميل تحسينات WooCommerce إذا كانت الإضافة مفعلة
-if (class_exists('WooCommerce')) {
-    require get_template_directory() . '/inc/woocommerce-enhancements.php';
-}
 
 /**
  * دوال مساعدة
